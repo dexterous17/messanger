@@ -1,0 +1,24 @@
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.start {
+    align-self: start;
+}
+
+.end {
+    align-self: end;
+}
+
+.message-main {
+    height: calc(100% - 100px);
+    /* or whatever height you want the container to be */
+    width: 100%;
+    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-behavior: 'smooth';
+}

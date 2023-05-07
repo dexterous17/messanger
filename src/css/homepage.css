@@ -1,0 +1,43 @@
+.homepage {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.recipient-list {
+    background-color: aliceblue;
+    ;
+}
+
+.message-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-title {
+    width: 100%;
+    height: 45px;
+}
+
+.message-footer {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.message-footer>form {
+    display: flex;
+}
+
+.message-footer>input {
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}

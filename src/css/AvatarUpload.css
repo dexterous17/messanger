@@ -1,0 +1,66 @@
+.avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .avatar-upload__label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .avatar-upload__preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-upload__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  
+  .avatar-upload__overlay:hover .avatar-upload__plus-icon {
+    color: #2196f3;
+  }
+  
+  .avatar-upload__plus-icon {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .avatar-upload__input {
+    display: none;
+  }
+  
+  .avatar-upload__remove-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .avatar-upload__error {
+    color: #ff5722;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  

@@ -1,0 +1,37 @@
+.avatar-field .bp3-file-input {
+  border-radius: 50%;
+  overflow: hidden;
+  padding-top: 100%;
+  position: relative;
+}
+
+.avatar-button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+}
+
+.avatar-button:hover .bp3-icon-plus {
+  display: inline-block;
+}
+
+.avatar-button:hover .text {
+  color: blue;
+}
+
+.bp3-icon-plus {
+  display: none;
+  font-size: 24px;
+}
+
+.blue {
+  color: blue;
+}
+
+.text {
+  margin-top: 8px;
+}
