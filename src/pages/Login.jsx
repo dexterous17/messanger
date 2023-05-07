@@ -1,49 +1,87 @@
-import React, { useState } from 'react';
-import api from '../api/api';
+import React from 'react';
+import { Button, Card, FormGroup, InputGroup } from '@blueprintjs/core';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import '../css/login.css';
+import api from '../api/api';
 import { useNavigate } from 'react-router-dom';
 
+const validationSchema = Yup.object({
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  password: Yup.string().required('Password is required'),
+});
+
 function Login({ socket }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      console.log(socket.connected)
-      const response = await api.post('/login', { email, password });
-      const token = response.data.token;
-      console.log(token)
-      localStorage.setItem('jwtToken', token);
-      console.log('Login successful!');
-      // Redirect to the profile page or perform any other actions
-      socket.connect()
-      console.log(socket.connected)
-      navigate('/');
-    } catch (error) {
-      console.log('Login failed:', error);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      try {
+        console.log(socket.connected);
+        const response = await api.post('/login', values);
+        const token = response.data.token;
+        console.log(token);
+        localStorage.setItem('jwtToken', token);
+        console.log('Login successful!');
+        // Redirect to the profile page or perform any other actions
+        socket.connect();
+        console.log(socket.connected);
+        navigate('/');
+      } catch (error) {
+        console.log('Login failed:', error);
+      }
+    },
+  });
 
   return (
     <div className='Login'>
       <h1>Login</h1>
-      <div></div>
-      <form className='Login-main' onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
-        </label>
-        <br />
-        <label>
-          <div>Password:</div>
-          <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Log In</button>
-      </form>
+      <Card>
+        <form className='Login-main' onSubmit={formik.handleSubmit}>
+          <FormGroup
+            label='Username'
+            labelFor='email'
+            helperText={formik.touched.email && formik.errors.email}
+            intent={formik.touched.email && formik.errors.email ? 'danger' : 'none'}
+          >
+            <InputGroup
+              id='email'
+              name='email'
+              type='email'
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fill
+              intent={formik.touched.email && formik.errors.email ? 'danger' : 'none'}
+            />
+          </FormGroup>
+          <FormGroup
+            label='Password'
+            labelFor='password'
+            helperText={formik.touched.password && formik.errors.password}
+            intent={formik.touched.password && formik.errors.password ? 'danger' : 'none'}
+          >
+            <InputGroup
+              id='password'
+              name='password'
+              type='password'
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              fill
+              intent={formik.touched.password && formik.errors.password ? 'danger' : 'none'}
+            />
+          </FormGroup>
+          <Button type='submit' intent='primary' disabled={formik.isSubmitting}>
+            Log In
+          </Button>
+        </form>
+      </Card>
     </div>
   );
 }

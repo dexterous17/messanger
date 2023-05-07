@@ -42,44 +42,51 @@ const RegistrationFormPartTwo = ({ initialValues, onSubmit, onPrevious }) => {
         setSubmitting(false);
     };
 
-    return (<div>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-            {({ isSubmitting, setFieldValue, values, errors }) => (
-                <Form className='form-container'>
-                    <AvatarUpload label="Avatar" name="avatar" sizeLimit={2000000} />
-                    <FormGroup label="Phone Number">
-                        <div style={{ display: 'flex' }}>
-                            <HTMLSelect
-                                style={{ marginRight: '5px' }}
-                                options={countries.map((c) => ({ label: `${c.name} (+${c.code})`, value: c.code }))}
-                                value={values.countryCode}
-                                onChange={(e) => setFieldValue('countryCode', e.target.value)}
-                                fill
-                            />
-                            <InputGroup
-                                name="phoneNumber"
-                                placeholder="Enter phone number"
-                                value={values.phoneNumber}
-                                onChange={(e) => setFieldValue('phoneNumber', e.target.value)}
-                                fill
-                            />
+    const handlePrevious = (values) => {
+        console.log('Previous values:', values);
+        onPrevious(values);
+    };
+
+    return (
+        <div>
+            <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
+                {({ isSubmitting, setFieldValue, values, errors }) => (
+                    <Form className='form-container'>
+                        <AvatarUpload label="Avatar" name="avatar" sizeLimit={2000000} />
+                        <FormGroup label="Phone Number">
+                            <div style={{ display: 'flex' }}>
+                                <HTMLSelect
+                                    style={{ marginRight: '5px' }}
+                                    options={countries.map((c) => ({ label: `${c.name} (+${c.code})`, value: c.code }))}
+                                    value={values.countryCode}
+                                    onChange={(e) => setFieldValue('countryCode', e.target.value)}
+                                    fill
+                                />
+                                <InputGroup
+                                    name="phoneNumber"
+                                    placeholder="Enter phone number"
+                                    value={values.phoneNumber}
+                                    onChange={(e) => setFieldValue('phoneNumber', e.target.value)}
+                                    fill
+                                />
+                            </div>
+                            {errors.countryCode && <p className="bp3-form-helper-text bp3-intent-danger">{errors.countryCode}</p>}
+                            <ErrorMessage name="phoneNumber">
+                                {(msg) => <p className="bp3-form-helper-text bp3-intent-danger">{msg}</p>}
+                            </ErrorMessage>
+                        </FormGroup>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Button type="button" onClick={() => handlePrevious(values)}>
+                                Previous
+                            </Button>
+                            <Button type="submit" intent="primary" disabled={isSubmitting}>
+                                Submit
+                            </Button>
                         </div>
-                        {errors.countryCode && <p className="bp3-form-helper-text bp3-intent-danger">{errors.countryCode}</p>}
-                        <ErrorMessage name="phoneNumber">
-                            {(msg) => <p className="bp3-form-helper-text bp3-intent-danger">{msg}</p>}
-                        </ErrorMessage>
-                    </FormGroup>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <Button type="button" onClick={onPrevious}>
-                            Previous
-                        </Button>
-                        <Button type="submit" intent="primary" disabled={isSubmitting}>
-                            Submit
-                        </Button>
-                    </div>
-                </Form>
-            )}
-        </Formik></div>
+                    </Form>
+                )}
+            </Formik>
+        </div>
     );
 };
 

@@ -1,7 +1,7 @@
 .progress-tracker {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     margin: 20px;
   }
   

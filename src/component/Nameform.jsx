@@ -14,14 +14,9 @@ const NameSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Email is required'),
 });
 
-function NameForm({ handleSubmit }) {
+function NameForm({ handleSubmit,initialValues }) {
   const formik = useFormik({
-    initialValues: {
-      name: '',
-      password: '',
-      confirmPassword: '',
-      email: '',
-    },
+    initialValues: initialValues,
     validationSchema: NameSchema,
     onSubmit: (values) => {
       handleSubmit(values);

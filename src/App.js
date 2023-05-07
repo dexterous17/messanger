@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import MemoizedHomePage from './pages/Homepage';
 import Setting from './pages/Setting'
 import ProtectedPage from './component/protected';
@@ -25,7 +24,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/setting" element={<Setting/>}/>
-        <Route path="/register" element={<Register />} />
         <Route path='/login' element={<Login socket={socket} />} />
         <Route path="/" element={<ProtectedPage component={MemoizedHomePage} socket={socket} />} />
         <Route path="/registration" element={<RegistrationPage/>}/>
