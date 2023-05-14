@@ -45,9 +45,9 @@ const RegistrationPage = () => {
 
             // Check if an avatar image is present
             if (updatedValues.avatar) {
-                formData.append('avatar', updatedValues.avatar);
+                formData.append('avatar_url', updatedValues.avatar);
             }
-            const response = api.post('/register', { body: formData });
+            const response = api.post('/register',formData );
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

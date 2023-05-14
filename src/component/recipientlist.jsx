@@ -16,14 +16,14 @@ function RecipientList({ onDataChange, recipientlist }) {
   };
 
   return (
-    <Card className="recipient-list">
+    <Card className="recipient-list" style={{padding: '5px'}}>
       <div className="search-bar">
         <input type="text" placeholder="Search recipients" value={searchText} onChange={handleSearchTextChange} />
       </div>
       <div className="recipient-list-items">
         {filteredRecipients?.map(recipientlist => (
           <Card style={{
-            height: '25px', display: "flex",
+            height: '25px',display: "flex",
             margin: "5px", alignItems: "center"
           }} key={recipientlist?.id} className="recipient-list-item" onClick={() => handleChildDataChange(recipientlist)}>
             {

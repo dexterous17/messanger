@@ -1,25 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 import jwt_decode from 'jwt-decode';
 import '../css/messagelist.css';
-import { Button} from '@blueprintjs/core';
+import { Card, Elevation } from '@blueprintjs/core';
 import api from '../api/api';
 import Message from './message';
+import MessageTitle from './MessageTitle';
+import MessageFooter from './MessageFooter';
 
-function MessageList({ recipient, sendMessage, socket }) {
-  const [message, setMessage] = useState();
-  const [sendmessage, setSendmessage] = useState('');
+function MessageList({ recipient, socket }) {
+  const [message, setMessage] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const sendMessage = (sendmessage) => {
     const decodedToken = jwt_decode(localStorage.getItem('jwtToken'));
     const senderid = decodedToken.id;
     const recipientid = recipient.id;
-    sendMessage(senderid, recipientid, sendmessage);
-    setSendmessage('');
-  };
-
-  const handleChange = (event) => {
-    setSendmessage(event.target.value);
+    socket.emit('send_message', { sender_id: senderid, recipient_id: recipientid, content: sendmessage });
   };
 
   const containerRef = useRef(null);
@@ -56,33 +51,20 @@ function MessageList({ recipient, sendMessage, socket }) {
     return () => {
       socket.off('receive_message');
     };
-  });
+  }, [socket]);
 
   useEffect(() => {
     scrollToBottom();
   }, [message]);
 
   return (
-    <div className='message-list'>
-      <div className='message-title'>
-        <img src='' alt='' />
-        <div>{recipient?.name}</div>
-      </div>
-      <div className='message-main' ref={containerRef}>
+    <Card className='message-list' elevation={Elevation.THREE}>
+      <MessageTitle recipient={recipient} />
+      <Card className='message-main' ref={containerRef}>
         <Message message={message} recipient={recipient} />
-      </div>
-      <div className='message-footer'>
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            value={sendmessage}
-            onChange={handleChange}
-            placeholder='Enter message'
-          />
-          <Button type='submit' text='Send' />
-        </form>
-      </div>
-    </div>
+      </Card>
+      <MessageFooter sendMessage={sendMessage} />
+    </Card>
   );
 }
 

@@ -13,12 +13,13 @@ ul {
 }
 
 .message-main {
-    height: calc(100% - 100px);
-    /* or whatever height you want the container to be */
+    height: 100%;
+    /* set a maximum height of 50% of viewport height */
     width: 100%;
     background-color: gainsboro;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
+    /* enable vertical scrolling when the content overflows */
     scroll-behavior: 'smooth';
 }

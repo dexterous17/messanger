@@ -19,7 +19,7 @@ function Message({ message, recipient }) {
 
   return (
     <div
-      style={{ display: "flex", flexDirection: "column" }}
+      style={{ display: "flex", flexDirection: "column" ,height: '100px'}}
       onClick={handleCloseAllPopovers}
     >
       {message?.map((item, index) => {

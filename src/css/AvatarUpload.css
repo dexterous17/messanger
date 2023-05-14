@@ -22,6 +22,10 @@
     justify-content: center;
   }
   
+  .avatar-upload__preview:hover .avatar-upload__remove-icon {
+    opacity: 1; /* show the icon when the container is hovered over */
+  }
+
   .avatar-upload__overlay {
     position: absolute;
     top: 0;
@@ -51,13 +55,18 @@
   
   .avatar-upload__remove-icon {
     position: absolute;
-    top: 4px;
-    right: 4px;
-    color: #fff;
-    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
     cursor: pointer;
+    color: #ffffff00;
   }
   
+  .avatar-upload__remove-icon:hover{
+    color: red;
+  }
+
   .avatar-upload__error {
     color: #ff5722;
     font-size: 12px;

@@ -1,16 +1,10 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Button, FormGroup, InputGroup, HTMLSelect } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import '../css/RegistrationFormPartTwo.css'; // Import the CSS file
 import AvatarUpload from './AvatarUpload';
-
-const countries = [
-    { name: 'Select country', code: '' }, // Add default value
-    { name: 'Canada', code: 'CA' },
-    { name: 'United States', code: 'US' },
-    { name: 'Mexico', code: 'MX' },
-    // add more countries here
-];
+import PhoneNumberInput from './PhoneNumberInput';
+import { countries } from '../helperfunction/countries';
 
 const RegistrationFormPartTwo = ({ initialValues, onSubmit, onPrevious }) => {
     const validationSchema = Yup.object({
@@ -53,28 +47,13 @@ const RegistrationFormPartTwo = ({ initialValues, onSubmit, onPrevious }) => {
                 {({ isSubmitting, setFieldValue, values, errors }) => (
                     <Form className='form-container'>
                         <AvatarUpload label="Avatar" name="avatar" sizeLimit={2000000} />
-                        <FormGroup label="Phone Number">
-                            <div style={{ display: 'flex' }}>
-                                <HTMLSelect
-                                    style={{ marginRight: '5px' }}
-                                    options={countries.map((c) => ({ label: `${c.name} (+${c.code})`, value: c.code }))}
-                                    value={values.countryCode}
-                                    onChange={(e) => setFieldValue('countryCode', e.target.value)}
-                                    fill
-                                />
-                                <InputGroup
-                                    name="phoneNumber"
-                                    placeholder="Enter phone number"
-                                    value={values.phoneNumber}
-                                    onChange={(e) => setFieldValue('phoneNumber', e.target.value)}
-                                    fill
-                                />
-                            </div>
-                            {errors.countryCode && <p className="bp3-form-helper-text bp3-intent-danger">{errors.countryCode}</p>}
-                            <ErrorMessage name="phoneNumber">
-                                {(msg) => <p className="bp3-form-helper-text bp3-intent-danger">{msg}</p>}
-                            </ErrorMessage>
-                        </FormGroup>
+                        <PhoneNumberInput
+                            countries={countries}
+                            setFieldValue={setFieldValue}
+                            values={values}
+                            errors={errors}
+                            isEditable={true}
+                        />
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Button type="button" onClick={() => handlePrevious(values)}>
                                 Previous

@@ -5,7 +5,6 @@ import '../css/AvatarUpload.css'
 
 const AvatarUpload = ({ label, name, sizeLimit }) => {
   const [field, meta, helpers] = useField(name);
-
   const handleFileChange = (event) => {
     const file = event.currentTarget.files[0];
     if (file) {
@@ -32,7 +31,7 @@ const AvatarUpload = ({ label, name, sizeLimit }) => {
           border: `2px solid ${meta.touched && meta.error ? Intent.DANGER : Intent.NONE}`,
         }}
       >
-        {!field.value && (
+        {!field.value  && (
           <label htmlFor={name} className="avatar-upload__overlay">
             <div className="avatar-upload__plus-icon">+</div>
           </label>
