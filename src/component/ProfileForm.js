@@ -110,7 +110,11 @@ export default function ProfileForm() {
                                 sizeLimit={1000000}
                             />
                         ) : (
-                            <ImagePreview imageUrl={formik.values.avatar_url} altText={formik.values.name} />
+                            <ImagePreview imageUrl={formik.values.avatar_url} altText={formik.values.name} style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }} />
                         )}
                         <NameAndEmailFormFields
                             isEditable={isEditable}

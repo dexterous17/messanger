@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, FormGroup, InputGroup, Card } from '@blueprintjs/core';
+import api from '../api/api';
 
 const SettingsSchema = Yup.object().shape({
     currentPassword: Yup.string().required('Current password is required'),
@@ -26,16 +27,15 @@ function Passwordreset() {
         onSubmit: async (values) => {
             const jwtToken = localStorage.getItem('jwtToken')
             try {
-                const response = await fetch('/reset-password', {
-                    method: 'POST',
+                const response = await api.post('/resetpassword', {
                     headers: {
-                        Authorization: `${jwtToken}`,
-                        'Content-Type': 'application/json',
+                        Authorization: jwtToken
                     },
-                    body: JSON.stringify(values),
+                    values
                 });
-
-                if (!response.ok) {
+                
+                console.log(response.status)
+                if (response.status !== 200) {
                     throw new Error('Failed to reset password');
                 }
 

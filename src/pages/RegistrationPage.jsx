@@ -47,7 +47,7 @@ const RegistrationPage = () => {
             if (updatedValues.avatar) {
                 formData.append('avatar_url', updatedValues.avatar);
             }
-            const response = api.post('/register',formData );
+            const response = api.post('/register', formData);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -71,6 +71,7 @@ const RegistrationPage = () => {
             justifyContent: "center"
         }}>
             <Card>
+                <h2>Registration Form</h2>
                 <ProgressTracker step={step} />
                 {step === 1 && <NameForm initialValues={formValues} handleSubmit={handleNextStep} />}
                 {step === 2 && (

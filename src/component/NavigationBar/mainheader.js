@@ -4,12 +4,11 @@ import {
   Menu,
   MenuDivider,
   PopoverInteractionKind,
-  Position,Card 
+  Position, Card
 } from '@blueprintjs/core';
 import { MenuItem2, Popover2 } from '@blueprintjs/popover2';
-import SearchBar from './SearchBar';
-import '../css/mainheader.css';
-import removeJwtToken from '../helperfunction/jwtfunctions';
+import SearchBar from '../SearchBar';
+import '../../css/mainheader.css';
 import { useNavigate } from 'react-router-dom';
 
 function MainHeader({ socket }) {
@@ -26,7 +25,7 @@ function MainHeader({ socket }) {
 
   const handleLogoutClick = () => {
     socket.disconnect();
-    removeJwtToken();
+    localStorage.removeItem('jwtToken');
     navigate('/login');
     setIsPopoverOpen(false);
   };
@@ -36,7 +35,7 @@ function MainHeader({ socket }) {
   };
 
   return (
-    <Card className="main-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center',padding: '8px' }}>
+    <Card className="main-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px' }}>
       <div className="main-header-logo">
         <Icon icon="chat" size={25} />
       </div>

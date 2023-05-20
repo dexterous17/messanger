@@ -1,6 +1,0 @@
-function removeJwtToken() {
-    localStorage.removeItem('jwtToken');
-};
-
-export default removeJwtToken;
-

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MessageList from '../component/messagelist';
 import RecipientList from '../component/recipientlist';
-import MainHeader from '../component/mainheader';
+import MainHeader from '../component/NavigationBar/mainheader';
 import "../css/homepage.css";
 import UserSelect from '../component/UserSelect';
 import api from '../api/api'
@@ -43,7 +43,6 @@ function HomePage({ socket }) {
             }
         }).then((data) => {
             setRecipientList(data.data)
-            console.log(data.data)
         }).catch()
     }, [])
 
@@ -59,7 +58,6 @@ function HomePage({ socket }) {
         <div className='homepage'>
             <MainHeader socket={socket} />
             <div className='main'>
-
                 <RecipientList onDataChange={handleDataChange} recipientlist={recipientlist} />
 
                 {recipient ? <MessageList recipient={recipient} sendMessage={sendMessage} socket={socket} /> : <UserSelect />}

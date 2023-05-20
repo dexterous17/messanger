@@ -1,28 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
 import MainMessage from "./mainMessage";
 
 function Message({ message, recipient }) {
-  const [openPopoverIndex, setOpenPopoverIndex] = useState(null);
-
-  const handleOpenPopover = (index) => {
-    setOpenPopoverIndex(index);
-  };
-
-  const handleClosePopover = () => {
-    setOpenPopoverIndex(null);
-  };
-
-  const handleCloseAllPopovers = () => {
-    setOpenPopoverIndex(null);
-  };
-
+  
   return (
     <div
-      style={{ display: "flex", flexDirection: "column" ,height: '100px'}}
-      onClick={handleCloseAllPopovers}
+      style={{ display: "flex", flexDirection: "column", height: '100px' }}
     >
-      {message?.map((item, index) => {
+      {message?.map((item) => {
         const isSenderRecipient = item.sender_id === recipient.id;
 
         return (
@@ -37,9 +23,6 @@ function Message({ message, recipient }) {
           >
             <MainMessage
               item={item}
-              isOpen={index === openPopoverIndex}
-              onOpenPopover={() => handleOpenPopover(index)}
-              onClosePopover={handleClosePopover}
             />
           </Card>
         );

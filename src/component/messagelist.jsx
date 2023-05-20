@@ -20,32 +20,39 @@ function MessageList({ recipient, socket }) {
   const containerRef = useRef(null);
 
   const scrollToBottom = () => {
-    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    containerRef.current.scrollTop = containerRef.current.scrollHeight - containerRef.current.clientHeight;
+    containerRef.current.scrollIntoView({ behavior: "smooth" });
+    console.log(containerRef.current.scrollTop)
   };
 
   useEffect(() => {
     const decodedToken = jwt_decode(localStorage.getItem('jwtToken'));
     const sender_id = decodedToken.id;
-    api
-      .post('/fetchmessages', {
-        headers: {
-          Authorization: localStorage.getItem('jwtToken'),
-        },
-        data: {
-          sender_id: sender_id,
-          recipient_id: recipient.id,
-        },
-      })
-      .then((data) => {
-        setMessage(data.data);
-        scrollToBottom();
-      })
-      .catch();
+
+    async function fetchMessages() {
+      try {
+        const response = await api.post('/fetchmessages', {
+          headers: {
+            Authorization: localStorage.getItem('jwtToken'),
+          },
+          data: {
+            sender_id: sender_id,
+            recipient_id: recipient.id,
+          },
+        });
+        setMessage(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchMessages();
+    setTimeout(() => scrollToBottom(), 100);
   }, [recipient]);
+
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      console.log(data);
       setMessage((prevState) => [...prevState, data]);
     });
     return () => {
@@ -53,16 +60,12 @@ function MessageList({ recipient, socket }) {
     };
   }, [socket]);
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [message]);
-
   return (
-    <Card className='message-list' elevation={Elevation.THREE}>
+    <Card className='message-list' elevation={Elevation.THREE} style={{ padding: "0px" }}>
       <MessageTitle recipient={recipient} />
-      <Card className='message-main' ref={containerRef}>
+      <div className='message-main' ref={containerRef} style={{ padding: "0px" }}>
         <Message message={message} recipient={recipient} />
-      </Card>
+      </div>
       <MessageFooter sendMessage={sendMessage} />
     </Card>
   );

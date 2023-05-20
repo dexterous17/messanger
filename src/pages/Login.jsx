@@ -40,48 +40,53 @@ function Login({ socket }) {
 
   return (
     <div className='Login'>
-      <h1>Login</h1>
-      <Card>
-        <form className='Login-main' onSubmit={formik.handleSubmit}>
-          <FormGroup
-            label='Username'
-            labelFor='email'
-            helperText={formik.touched.email && formik.errors.email}
-            intent={formik.touched.email && formik.errors.email ? 'danger' : 'none'}
-          >
-            <InputGroup
-              id='email'
-              name='email'
-              type='email'
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              fill
+      <div>
+        <h1>Login</h1>
+        <Card>
+          <form className='Login-main' onSubmit={formik.handleSubmit} style={{
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            <FormGroup
+              label='Username'
+              labelFor='email'
+              helperText={formik.touched.email && formik.errors.email}
               intent={formik.touched.email && formik.errors.email ? 'danger' : 'none'}
-            />
-          </FormGroup>
-          <FormGroup
-            label='Password'
-            labelFor='password'
-            helperText={formik.touched.password && formik.errors.password}
-            intent={formik.touched.password && formik.errors.password ? 'danger' : 'none'}
-          >
-            <InputGroup
-              id='password'
-              name='password'
-              type='password'
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              fill
+            >
+              <InputGroup
+                id='email'
+                name='email'
+                type='email'
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                fill
+                intent={formik.touched.email && formik.errors.email ? 'danger' : 'none'}
+              />
+            </FormGroup>
+            <FormGroup
+              label='Password'
+              labelFor='password'
+              helperText={formik.touched.password && formik.errors.password}
               intent={formik.touched.password && formik.errors.password ? 'danger' : 'none'}
-            />
-          </FormGroup>
-          <Button type='submit' intent='primary' disabled={formik.isSubmitting}>
-            Log In
-          </Button>
-        </form>
-      </Card>
+            >
+              <InputGroup
+                id='password'
+                name='password'
+                type='password'
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                fill
+                intent={formik.touched.password && formik.errors.password ? 'danger' : 'none'}
+              />
+            </FormGroup>
+            <Button type='submit' intent='primary' disabled={formik.isSubmitting}>
+              Log In
+            </Button>
+          </form>
+        </Card>
+      </div>
     </div>
   );
 }

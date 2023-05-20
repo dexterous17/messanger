@@ -25,7 +25,6 @@ function NameForm({ handleSubmit,initialValues }) {
 
   return (
     <div>
-      <h2>Registration Form (Part 1 of 2)</h2>
       <form onSubmit={formik.handleSubmit}>
         <FormGroup
           label="Full Name"
