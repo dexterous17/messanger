@@ -15,17 +15,16 @@ Performance monitoring: The application incorporates web-vitals to monitor and m
 
 ## UI Images
 
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+<p float="left">
+  <img src="https://github.com/dexterous17/messanger/raw/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20one%20.jpg" alt="Registration Part One" width="400" height="300" />
+  <img src="https://github.com/dexterous17/messanger/raw/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Profile%20page.jpg" alt="Profile Page" width="400" height="300" />
+</p>
 
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+<p float="left">
+  <img src="https://github.com/dexterous17/messanger/raw/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Main%20Chat.jpg" alt="Main Chat" width="400" height="300" />
+  <img src="https://github.com/dexterous17/messanger/raw/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Login.jpg" alt="Login" width="400" height="300" />
+</p>
 
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
-
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
-
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
-
-<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
 
 ## Installation
 To install and run the live chat front-end application, follow these steps:
