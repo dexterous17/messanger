@@ -15,6 +15,18 @@ Performance monitoring: The application incorporates web-vitals to monitor and m
 
 ## UI Images
 
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
+<img src="https://github.com/dexterous17/messanger/blob/2a87cb12b3daecdbfd5bec9a9955528694f2a9a3/Registration%20part%20second.jpg" alt="Image Description" width="300" height="200">
+
 ## Installation
 To install and run the live chat front-end application, follow these steps:
 
